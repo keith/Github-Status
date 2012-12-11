@@ -8,8 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface KSAppDelegate : NSObject <NSApplicationDelegate>
+@interface KSAppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
+@property (nonatomic, strong) NSStatusItem *statusItem;
+@property (nonatomic, strong) NSMenu *statusMenu;
+
+@property (nonatomic, strong) NSMenuItem *lastChecked;
+@property (nonatomic, strong) NSMenuItem *separatorItem;
+@property (nonatomic, strong) NSMenuItem *githubStatusItem;
+@property (nonatomic, strong) NSMenuItem *githubMessageItem;
+@property (nonatomic, strong) NSMenuItem *githubUpdatedDate;
+@property (nonatomic, strong) NSMenuItem *loginItem;
+@property (nonatomic, strong) NSMenuItem *quitItem;
 
 @end
