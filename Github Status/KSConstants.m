@@ -19,5 +19,7 @@ NSString * const kGithubStatusKey = @"status";
 NSString * const kGithubMessageKey = @"body";
 NSString * const kGithubDateKey = @"created_on";
 
+NSString * const kGithubNormalStatus = @"good";
+
 @implementation KSConstants
 @end

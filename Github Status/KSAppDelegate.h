@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface KSAppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate>
+@interface KSAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (nonatomic, strong) NSStatusItem *statusItem;
 @property (nonatomic, strong) NSMenu *statusMenu;

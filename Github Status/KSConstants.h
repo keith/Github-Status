@@ -19,5 +19,7 @@ FOUNDATION_EXPORT NSString * const kGithubStatusKey;
 FOUNDATION_EXPORT NSString * const kGithubMessageKey;
 FOUNDATION_EXPORT NSString * const kGithubDateKey;
 
+FOUNDATION_EXPORT NSString * const kGithubNormalStatus;
+
 @interface KSConstants : NSObject
 @end

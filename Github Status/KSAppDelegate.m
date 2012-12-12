@@ -27,12 +27,8 @@
 - (void)awakeFromNib
 {
     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-//    [self.statusItem setImage:[self warningStatusImageHighlighted:NO]];
-//    [self.statusItem setAlternateImage:[self warningStatusImageHighlighted:YES]];
     [self.statusItem setImage:[self normalStatusImageHighlighted:NO]];
     [self.statusItem setAlternateImage:[self normalStatusImageHighlighted:YES]];
-
-    //    [self.statusItem setView:[self normalStatusView]];
     [self.statusItem setHighlightMode:YES];
     [self.statusItem setTarget:self];
     
@@ -142,9 +138,7 @@
             // Set github down/network fail
         }];
         
-        if (![reach startNotifier]) {
-            NSLog(@"Failed to start reachability notifier.");
-        }
+        [reach startNotifier];
     }
     
     [self setupMenu];
@@ -157,18 +151,24 @@
     {
         NSLog(@"%@", JSON);
         
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setLocale:[NSLocale currentLocale]];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+        [dateFormatter setDateStyle:NSDateFormatterNoStyle];
+        [dateFormatter setLocale:[NSLocale currentLocale]];
         
-        NSLog(@"%@", [formatter stringFromDate:[NSDate date]]);
-        
-        [self.lastChecked setTitle:[NSString stringWithFormat:@"Last Checked: %@", [NSDate date]]];
+        [self.lastChecked setTitle:[NSString stringWithFormat:@"Last Checked: %@", [dateFormatter stringFromDate:[NSDate date]]]];
         [self.lastChecked setHidden:NO];
 
         if ([JSON valueForKey:kGithubStatusKey]) {
             [self.githubStatusItem setTitle:[JSON valueForKey:kGithubStatusKey]];
             [self.githubStatusItem setHidden:NO];
             [self.separatorItem setHidden:NO];
+            
+            if ([[JSON valueForKey:kGithubStatusKey] isEqualToString:kGithubNormalStatus]) {
+                [self setNormalIcons];
+            } else {
+                [self setErrorIcons];
+            }
         } else {
             [self.githubStatusItem setHidden:YES];
         }
@@ -182,7 +182,14 @@
         }
         
         if ([JSON valueForKey:kGithubDateKey]) {
-            [self.githubUpdatedDate setTitle:[NSString stringWithFormat:@"Updated %@", [JSON valueForKey:kGithubDateKey]]];
+            NSString *dateString = [JSON valueForKey:kGithubDateKey];
+            NSDate *githubUpdateDate = [NSDate dateWithNaturalLanguageString:[JSON valueForKey:kGithubDateKey]];
+            if (githubUpdateDate) {
+                [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+                dateString = [dateFormatter stringFromDate:githubUpdateDate];
+            }
+
+            [self.githubUpdatedDate setTitle:[NSString stringWithFormat:@"Updated %@", dateString]];
             [self.githubUpdatedDate setHidden:NO];
             [self.separatorItem setHidden:NO];
         } else {
@@ -194,6 +201,7 @@
         }
         
         [self.statusMenu update];
+        [NSTimer scheduledTimerWithTimeInterval:300 target:self selector:@selector(checkStatus) userInfo:nil repeats:NO];
     }
                                                                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
     {
@@ -201,11 +209,6 @@
     }];
     
     [operation start];
-}
-
-- (void)menuWillOpen:(NSMenu *)menu
-{
-    
 }
 
 - (void)setOpenAtLogin
@@ -246,7 +249,20 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)showAbout {
+- (void)setNormalIcons
+{
+    [self.statusItem setImage:[self normalStatusImageHighlighted:NO]];
+    [self.statusItem setAlternateImage:[self normalStatusImageHighlighted:YES]];
+}
+
+- (void)setErrorIcons
+{
+    [self.statusItem setImage:[self warningStatusImageHighlighted:NO]];
+    [self.statusItem setAlternateImage:[self warningStatusImageHighlighted:YES]];
+}
+
+- (void)showAbout
+{
     [NSApp activateIgnoringOtherApps:YES];
     [NSApp orderFrontStandardAboutPanel:self];
 }
