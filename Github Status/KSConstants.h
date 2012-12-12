@@ -10,6 +10,8 @@
 
 // Preferences
 FOUNDATION_EXPORT NSString * const openAtLogin;
+FOUNDATION_EXPORT NSString * const refreshInterval;
+FOUNDATION_EXPORT NSString * const downRefreshInterval;
 
 // Github strings
 FOUNDATION_EXPORT NSString * const kGithubAPIURLString;
@@ -20,6 +22,9 @@ FOUNDATION_EXPORT NSString * const kGithubMessageKey;
 FOUNDATION_EXPORT NSString * const kGithubDateKey;
 
 FOUNDATION_EXPORT NSString * const kGithubNormalStatus;
+
+// User strings
+FOUNDATION_EXPORT NSString * const GITHUB_UNREACHABLE;
 
 @interface KSConstants : NSObject
 @end

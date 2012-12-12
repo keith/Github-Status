@@ -10,6 +10,8 @@
 
 // Preferences
 NSString * const openAtLogin = @"openAtLogin";
+NSString * const refreshInterval = @"refreshInterval";
+NSString * const downRefreshInterval = @"downRefreshInterval";
 
 // Github strings
 NSString * const kGithubAPIURLString = @"https://status.github.com/api/";
@@ -20,6 +22,9 @@ NSString * const kGithubMessageKey = @"body";
 NSString * const kGithubDateKey = @"created_on";
 
 NSString * const kGithubNormalStatus = @"good";
+
+// User Strings
+NSString * const GITHUB_UNREACHABLE = @"status.github.com is unreachable.";
 
 @implementation KSConstants
 @end

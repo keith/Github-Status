@@ -21,4 +21,6 @@
 @property (nonatomic, strong) NSMenuItem *loginItem;
 @property (nonatomic, strong) NSMenuItem *quitItem;
 
+@property BOOL githubIsUp;
+
 @end

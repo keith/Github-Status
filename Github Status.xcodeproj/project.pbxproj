@@ -135,13 +135,13 @@
 		C2D5B2AB16768AEA00FDAB90 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C2D5B2D41676ABA700FDAB90 /* Preferences.plist */,
 				C2D5B2DC1676D41F00FDAB90 /* fontawesome-webfont.ttf */,
 				C2D5B2AC16768AEA00FDAB90 /* Github Status-Info.plist */,
 				C2D5B2AD16768AEA00FDAB90 /* InfoPlist.strings */,
 				C2D5B2B016768AEA00FDAB90 /* main.m */,
 				C2D5B2B216768AEA00FDAB90 /* Github Status-Prefix.pch */,
 				C2D5B2B316768AEB00FDAB90 /* Credits.rtf */,
-				C2D5B2D41676ABA700FDAB90 /* Preferences.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -326,6 +326,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 51316B7BFB5A4A15B18CB153 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Github Status/Github Status-Prefix.pch";
@@ -339,6 +340,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 51316B7BFB5A4A15B18CB153 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Github Status/Github Status-Prefix.pch";
