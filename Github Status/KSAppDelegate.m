@@ -73,6 +73,7 @@
     {
         [self setLastCheckedStringWithDate:[NSDate date]];
 
+        // Attempt to make a prettier date from the returned date and update the menu items
         if ([JSON valueForKey:kGithubDateKey]) {
             NSString *dateString = [JSON valueForKey:kGithubDateKey];
             NSDate *githubUpdateDate = [NSDate dateWithNaturalLanguageString:[JSON valueForKey:kGithubDateKey]];
@@ -91,12 +92,8 @@
             [self setMenuWithStatus:[JSON valueForKey:kGithubStatusKey] message:[JSON valueForKey:kGithubMessageKey] dateString:nil];
         }
         
-        if (self.githubStatusItem.isHidden && self.githubMessageItem.isHidden && self.githubUpdatedDate.isHidden) {
-            [self.separatorItem setHidden:YES];
-        }
         
-        [self.statusMenu update];
-        
+        // Change the icon and present notifications based on the previous status
         BOOL githubWasUp = self.githubIsUp;
         
         if ([[JSON valueForKey:kGithubStatusKey] isEqualToString:kGithubNormalStatus]) {
@@ -113,10 +110,16 @@
             [self deliverGithubIsBackNotification];
         }
         
-        [self runTimerWithTimeInterval:[[[NSUserDefaults standardUserDefaults] objectForKey:refreshInterval] intValue]];
+        if (self.githubIsUp) {
+            [self runTimerWithTimeInterval:[[[NSUserDefaults standardUserDefaults] objectForKey:refreshInterval] intValue]];
+        } else {
+            [self runTimerWithTimeInterval:[[[NSUserDefaults standardUserDefaults] objectForKey:downRefreshInterval] intValue]];
+        }
+        
     }
                                                                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
     {
+        // When the request fails, display the error in the menu item
         [self setLastCheckedStringWithDate:[NSDate date]];
         [self setErrorIcons];
         [self.separatorItem setHidden:NO];
@@ -230,6 +233,8 @@
     if (self.githubStatusItem.isHidden && self.githubMessageItem.isHidden && self.githubUpdatedDate.isHidden) {
         [self.separatorItem setHidden:YES];
     }
+    
+    [self.statusMenu update];
 }
 
 - (void)setLastCheckedStringWithDate:(NSDate *)date
