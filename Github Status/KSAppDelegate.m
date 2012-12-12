@@ -27,12 +27,48 @@
 - (void)awakeFromNib
 {
     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    [self.statusItem setImage:[NSImage imageNamed:NSImageNameActionTemplate]];
+//    [self.statusItem setImage:[self warningStatusImageHighlighted:NO]];
+//    [self.statusItem setAlternateImage:[self warningStatusImageHighlighted:YES]];
+    [self.statusItem setImage:[self normalStatusImageHighlighted:NO]];
+    [self.statusItem setAlternateImage:[self normalStatusImageHighlighted:YES]];
+
+    //    [self.statusItem setView:[self normalStatusView]];
     [self.statusItem setHighlightMode:YES];
     [self.statusItem setTarget:self];
     
     [self setupMenu];
     [self.statusItem setMenu:self.statusMenu];
+}
+
+- (NSImage *)normalStatusImageHighlighted:(BOOL)highlighted
+{
+    NSString *iconKey = @"\U0000f09b";
+    return [self imageWithUnicodeString:iconKey isHightlighted:highlighted];
+}
+
+- (NSImage *)warningStatusImageHighlighted:(BOOL)highlighted
+{
+    NSString *iconKey = @"\U0000f071";
+    return [self imageWithUnicodeString:iconKey isHightlighted:highlighted];
+}
+
+- (NSImage *)imageWithUnicodeString:(NSString *)unicode isHightlighted:(BOOL)hightlighted
+{
+    CGFloat thickness = [[NSStatusBar systemStatusBar] thickness];
+    NSFont *fontAwesome = [NSFont fontWithName:@"FontAwesome" size:thickness - 1];
+    NSColor *textColor = hightlighted ? [NSColor whiteColor] : [NSColor blackColor];
+    
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    [style setAlignment:NSCenterTextAlignment];
+
+    NSDictionary *attributes = @{NSFontAttributeName : fontAwesome, NSForegroundColorAttributeName : textColor, NSParagraphStyleAttributeName : style};
+    
+    NSSize imageSize = NSMakeSize(thickness, thickness);
+    NSImage *image = [[NSImage alloc] initWithSize:imageSize];
+    [image lockFocus];
+    [unicode drawInRect:NSMakeRect(0, 1, imageSize.width, imageSize.height) withAttributes:attributes];
+    [image unlockFocus];
+    return image;
 }
 
 - (void)setupMenu
@@ -121,6 +157,11 @@
     {
         NSLog(@"%@", JSON);
         
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setLocale:[NSLocale currentLocale]];
+        
+        NSLog(@"%@", [formatter stringFromDate:[NSDate date]]);
+        
         [self.lastChecked setTitle:[NSString stringWithFormat:@"Last Checked: %@", [NSDate date]]];
         [self.lastChecked setHidden:NO];
 
@@ -141,7 +182,7 @@
         }
         
         if ([JSON valueForKey:kGithubDateKey]) {
-            [self.githubUpdatedDate setTitle:[JSON valueForKey:kGithubDateKey]];
+            [self.githubUpdatedDate setTitle:[NSString stringWithFormat:@"Updated %@", [JSON valueForKey:kGithubDateKey]]];
             [self.githubUpdatedDate setHidden:NO];
             [self.separatorItem setHidden:NO];
         } else {
