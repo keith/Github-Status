@@ -189,7 +189,7 @@
                 dateString = [dateFormatter stringFromDate:githubUpdateDate];
             }
 
-            [self.githubUpdatedDate setTitle:[NSString stringWithFormat:@"Updated %@", dateString]];
+            [self.githubUpdatedDate setTitle:[NSString stringWithFormat:@"Updated: %@", dateString]];
             [self.githubUpdatedDate setHidden:NO];
             [self.separatorItem setHidden:NO];
         } else {

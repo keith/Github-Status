@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4127E9E0BDF848158EB7F06F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE4C188240942E68E75B3BA /* libPods.a */; };
+		C2A3AC8B1679260A00FE1221 /* MPLoginItems.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A3AC891679260A00FE1221 /* MPLoginItems.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2D5B2A516768AEA00FDAB90 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D5B2A416768AEA00FDAB90 /* Cocoa.framework */; };
 		C2D5B2AF16768AEA00FDAB90 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2D5B2AD16768AEA00FDAB90 /* InfoPlist.strings */; };
 		C2D5B2B116768AEA00FDAB90 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D5B2B016768AEA00FDAB90 /* main.m */; };
@@ -16,7 +17,6 @@
 		C2D5B2BB16768AEB00FDAB90 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D5B2B916768AEB00FDAB90 /* MainMenu.xib */; };
 		C2D5B2D31676A89F00FDAB90 /* KSConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D5B2D21676A89F00FDAB90 /* KSConstants.m */; };
 		C2D5B2D51676ABA700FDAB90 /* Preferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2D5B2D41676ABA700FDAB90 /* Preferences.plist */; };
-		C2D5B2DB1676ADF300FDAB90 /* MPLoginItems.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D5B2D91676ADF300FDAB90 /* MPLoginItems.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2D5B2DD1676D41F00FDAB90 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2D5B2DC1676D41F00FDAB90 /* fontawesome-webfont.ttf */; };
 		C2D5B2DF1676D45000FDAB90 /* fontawesome-webfont.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = C2D5B2DC1676D41F00FDAB90 /* fontawesome-webfont.ttf */; };
 /* End PBXBuildFile section */
@@ -37,6 +37,8 @@
 /* Begin PBXFileReference section */
 		3DE4C188240942E68E75B3BA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		51316B7BFB5A4A15B18CB153 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		C2A3AC881679260A00FE1221 /* MPLoginItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPLoginItems.h; sourceTree = "<group>"; };
+		C2A3AC891679260A00FE1221 /* MPLoginItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPLoginItems.m; sourceTree = "<group>"; };
 		C2D5B2A016768AEA00FDAB90 /* Github Status.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Github Status.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D5B2A416768AEA00FDAB90 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C2D5B2A716768AEA00FDAB90 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -53,8 +55,6 @@
 		C2D5B2D11676A89F00FDAB90 /* KSConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSConstants.h; sourceTree = "<group>"; };
 		C2D5B2D21676A89F00FDAB90 /* KSConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSConstants.m; sourceTree = "<group>"; };
 		C2D5B2D41676ABA700FDAB90 /* Preferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Preferences.plist; sourceTree = "<group>"; };
-		C2D5B2D81676ADF300FDAB90 /* MPLoginItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPLoginItems.h; sourceTree = "<group>"; };
-		C2D5B2D91676ADF300FDAB90 /* MPLoginItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPLoginItems.m; sourceTree = "<group>"; };
 		C2D5B2DC1676D41F00FDAB90 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +71,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C2A3AC861679260A00FE1221 /* MPLoginItems */ = {
+			isa = PBXGroup;
+			children = (
+				C2A3AC881679260A00FE1221 /* MPLoginItems.h */,
+				C2A3AC891679260A00FE1221 /* MPLoginItems.m */,
+			);
+			path = MPLoginItems;
+			sourceTree = "<group>";
+		};
 		C2D5B29516768AEA00FDAB90 = {
 			isa = PBXGroup;
 			children = (
@@ -117,7 +126,7 @@
 				C2D5B2D11676A89F00FDAB90 /* KSConstants.h */,
 				C2D5B2D21676A89F00FDAB90 /* KSConstants.m */,
 				C2D5B2B916768AEB00FDAB90 /* MainMenu.xib */,
-				C2D5B2D61676ADF300FDAB90 /* MPLoginItems */,
+				C2A3AC861679260A00FE1221 /* MPLoginItems */,
 				C2D5B2AB16768AEA00FDAB90 /* Supporting Files */,
 			);
 			path = "Github Status";
@@ -135,15 +144,6 @@
 				C2D5B2D41676ABA700FDAB90 /* Preferences.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C2D5B2D61676ADF300FDAB90 /* MPLoginItems */ = {
-			isa = PBXGroup;
-			children = (
-				C2D5B2D81676ADF300FDAB90 /* MPLoginItems.h */,
-				C2D5B2D91676ADF300FDAB90 /* MPLoginItems.m */,
-			);
-			path = MPLoginItems;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,7 +235,7 @@
 				C2D5B2B116768AEA00FDAB90 /* main.m in Sources */,
 				C2D5B2B816768AEB00FDAB90 /* KSAppDelegate.m in Sources */,
 				C2D5B2D31676A89F00FDAB90 /* KSConstants.m in Sources */,
-				C2D5B2DB1676ADF300FDAB90 /* MPLoginItems.m in Sources */,
+				C2A3AC8B1679260A00FE1221 /* MPLoginItems.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
