@@ -33,8 +33,7 @@
 {
     // Add the status item with normal images
     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    [self.statusItem setImage:[self normalStatusImageHighlighted:NO]];
-    [self.statusItem setAlternateImage:[self normalStatusImageHighlighted:YES]];
+    [self setNormalIcons];
     [self.statusItem setHighlightMode:YES];
     [self.statusItem setTarget:self];
     
@@ -369,6 +368,10 @@
 {
     [NSApp activateIgnoringOtherApps:YES];
     [NSApp orderFrontStandardAboutPanel:self];
+}
+
+- (void)dealloc {
+    [[NSStatusBar systemStatusBar] removeStatusItem:self.statusItem];
 }
 
 @end
