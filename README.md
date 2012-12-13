@@ -1,4 +1,10 @@
-## Github Status
+# Github Status
+
+---------------
+
+<p align="center">
+  <img src="https://raw.github.com/Keithbsmiley/Github-Status/master/screenshot.png"/>
+</p>
 
 This is a small menu bar application for OS X using the new [Github Status API](https://status.github.com/api)
 
