@@ -2,8 +2,6 @@
 
 This is a small menu bar application for OS X using the new [Github Status API](https://status.github.com/api)
 
-## Download
-
 Download the most recent version [here](http://smileykeith.com/media/downloads/GithubStatus.app.zip)
 
 -------------------
