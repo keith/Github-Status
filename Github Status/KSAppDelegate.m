@@ -154,7 +154,7 @@
     if (!self.statusMenu) {
         self.statusMenu = [[NSMenu alloc] init];
         [self.statusMenu addItemWithTitle:@"About Github Status" action:@selector(showAbout) keyEquivalent:@""];
-        [self.statusMenu addItemWithTitle:@"Refresh" action:@selector(checkStatus) keyEquivalent:@""];
+        [self.statusMenu addItemWithTitle:@"Refresh" action:@selector(checkStatus) keyEquivalent:@"r"];
     }
     
     if (!self.lastChecked) {
