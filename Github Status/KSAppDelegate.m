@@ -6,18 +6,17 @@
 //  Copyright (c) 2012 Keith Smiley. All rights reserved.
 //
 
+#import <IYLoginItem/NSBundle+LoginItem.h>
 #import "KSAppDelegate.h"
 #import "KSConstants.h"
-#import "MPLoginItems/MPLoginItems.h"
 
 @implementation KSAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
     NSDictionary *defaults = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Preferences" ofType:@"plist"]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
-    [[NSUserDefaults standardUserDefaults] setBool:[MPLoginItems loginItemExists:bundleURL] forKey:openAtLogin];
+    [[NSUserDefaults standardUserDefaults] setBool:[[NSBundle mainBundle] isLoginItem] forKey:openAtLogin];
 
     self.githubIsUp = YES;
     [self checkStatus];
@@ -329,11 +328,11 @@
 {
     NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
     if (self.loginItem.state == NSOnState) {
-        if ([MPLoginItems loginItemExists:bundleURL]) {
-            [MPLoginItems removeLoginItemWithURL:bundleURL];
+        if ([[NSBundle mainBundle] isLoginItem]) {
+            [[NSBundle mainBundle] removeFromLoginItems];
         }
-        
-        if ([MPLoginItems loginItemExists:bundleURL]) {
+
+        if ([[NSBundle mainBundle] isLoginItem]) {
             [[NSAlert alertWithMessageText:@"Github Status"
                              defaultButton:nil
                            alternateButton:nil
@@ -344,11 +343,11 @@
             [[NSUserDefaults standardUserDefaults] setBool:NO forKey:openAtLogin];
         }
     } else {
-        if (![MPLoginItems loginItemExists:bundleURL]) {
-            [MPLoginItems addLoginItemWithURL:bundleURL];
+        if (![[NSBundle mainBundle] isLoginItem]) {
+            [[NSBundle mainBundle] addToLoginItems];
         }
         
-        if ([MPLoginItems loginItemExists:bundleURL]) {
+        if ([[NSBundle mainBundle] isLoginItem]) {
             [self.loginItem setState:NSOnState];
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:openAtLogin];
         } else {
