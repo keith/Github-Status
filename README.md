@@ -7,7 +7,7 @@ page](https://github.com/Keithbsmiley/Github-Status/releases)
 
 ---
 
-![https://raw.github.com/Keithbsmiley/Github-Status/master/screenshot.png]()
+![](https://raw.github.com/Keithbsmiley/Github-Status/master/screenshot.png)
 
 ---
 
