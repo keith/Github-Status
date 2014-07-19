@@ -1,22 +1,29 @@
 # Github Status
 
----------------
+This is a small menu bar application for OS X using the [Github Status API](https://status.github.com/api)
 
-<p align="center">
-  <img src="https://raw.github.com/Keithbsmiley/Github-Status/master/screenshot.png"/>
-</p>
+Download a pre-built binary from the [releases
+page](https://github.com/Keithbsmiley/Github-Status/releases)
 
-This is a small menu bar application for OS X using the new [Github Status API](https://status.github.com/api)
+---
 
-Download the most recent version [here](http://smileykeith.com/downloads/GithubStatus.app.zip)
+![https://raw.github.com/Keithbsmiley/Github-Status/master/screenshot.png]()
 
--------------------
+---
 
 ### Change time intervals
 
-Currently there isn't a GUI for changing the time refresh intervals. If you'd like to change them you can update them through terminal by using 2 different commands.
+Currently there isn't a GUI for changing the time refresh intervals. If
+you'd like to change them you can through terminal by using these
+commands:
 
-    defaults write com.keithsmiley.github-status refreshInterval -int NUM
-    defaults write com.keithsmiley.github-status downRefreshInterval -int NUM
+```sh
+defaults write com.keithsmiley.github-status KSGithubStatusRefreshInterval -int NUM
+defaults write com.keithsmiley.github-status KSGithubStatusDownRefreshInterval -int NUM
+```
+As you may expect the first is the normal refresh time while the second
+is the refresh time when the last status reported Github as being down.
 
-Replace `NUM` with the SECONDS you want it to be refreshed by. EX 60 for 1 minute. The `refreshInterval` is the interval for when github is acting normal. The default is 1800 aka 30 minutes. The `downRefreshInterval` is the default time for when Github is down or unreachable. The default is 300 aka 5 minutes.
+Replace `NUM` with the **seconds** you want it to be refreshed by. 60
+for 1 minute etc. The refresh interval default is 1800 (30 minutes). The
+down refresh interval default is 300 (5 minutes).
