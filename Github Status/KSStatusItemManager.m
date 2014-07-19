@@ -44,7 +44,6 @@
         _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
         _statusItem.highlightMode = YES;
         _statusItem.image = self.normalStatusImage;
-//        _statusItem.menu
     }
 
     return _statusItem;
@@ -63,8 +62,7 @@
 - (NSImage *)warningStatusImage
 {
     if (!_warningStatusImage) {
-#warning test this
-        _warningStatusImage = [NSImage imageNamed:NSImageNameCaution];
+        _warningStatusImage = [NSImage imageNamed:@"warning"];
         [_warningStatusImage setTemplate:YES];
     }
 
