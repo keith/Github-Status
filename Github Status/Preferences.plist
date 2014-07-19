@@ -2,11 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>openAtLogin</key>
+	<key>KSGithubStatusOpenAtLogin</key>
 	<false/>
-	<key>refreshInterval</key>
+	<key>KSGithubStatusRefreshInterval</key>
 	<integer>1800</integer>
-	<key>downRefreshInterval</key>
+	<key>KSGithubStatusDownRefreshInterval</key>
 	<integer>300</integer>
 </dict>
 </plist>
