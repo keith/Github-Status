@@ -1,3 +1,3 @@
-platform :osx, '10.8'
+platform :osx, '10.9'
 
-pod 'KSGithubStatusAPI', '~> 0.1.0'
+pod 'KSGithubStatusAPI', '~> 0.2.1'

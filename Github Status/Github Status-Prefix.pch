@@ -3,9 +3,5 @@
 //
 
 #ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
-
-    // Import for AFNetworking
-    #import <SystemConfiguration/SystemConfiguration.h>
-    #import <CoreServices/CoreServices.h>
+    @import Cocoa;
 #endif
