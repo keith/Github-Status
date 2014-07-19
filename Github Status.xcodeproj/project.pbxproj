@@ -16,8 +16,6 @@
 		C2D5B2BB16768AEB00FDAB90 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D5B2B916768AEB00FDAB90 /* MainMenu.xib */; };
 		C2D5B2D31676A89F00FDAB90 /* KSConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D5B2D21676A89F00FDAB90 /* KSConstants.m */; };
 		C2D5B2D51676ABA700FDAB90 /* Preferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2D5B2D41676ABA700FDAB90 /* Preferences.plist */; };
-		C2D5B2DD1676D41F00FDAB90 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2D5B2DC1676D41F00FDAB90 /* fontawesome-webfont.ttf */; };
-		C2D5B2DF1676D45000FDAB90 /* fontawesome-webfont.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = C2D5B2DC1676D41F00FDAB90 /* fontawesome-webfont.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,7 +25,6 @@
 			dstPath = Fonts;
 			dstSubfolderSpec = 7;
 			files = (
-				C2D5B2DF1676D45000FDAB90 /* fontawesome-webfont.ttf in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,7 +49,6 @@
 		C2D5B2D11676A89F00FDAB90 /* KSConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSConstants.h; sourceTree = "<group>"; };
 		C2D5B2D21676A89F00FDAB90 /* KSConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSConstants.m; sourceTree = "<group>"; };
 		C2D5B2D41676ABA700FDAB90 /* Preferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Preferences.plist; sourceTree = "<group>"; };
-		C2D5B2DC1676D41F00FDAB90 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				C2D5B2D41676ABA700FDAB90 /* Preferences.plist */,
-				C2D5B2DC1676D41F00FDAB90 /* fontawesome-webfont.ttf */,
 				C2D5B2AC16768AEA00FDAB90 /* Github Status-Info.plist */,
 				C2D5B2AD16768AEA00FDAB90 /* InfoPlist.strings */,
 				C2D5B2B016768AEA00FDAB90 /* main.m */,
@@ -195,7 +190,6 @@
 				C2D5B2B516768AEB00FDAB90 /* Credits.rtf in Resources */,
 				C2D5B2BB16768AEB00FDAB90 /* MainMenu.xib in Resources */,
 				C2D5B2D51676ABA700FDAB90 /* Preferences.plist in Resources */,
-				C2D5B2DD1676D41F00FDAB90 /* fontawesome-webfont.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
