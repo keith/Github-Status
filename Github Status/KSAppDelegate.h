@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 Keith Smiley. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-
 @interface KSAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (nonatomic, strong) NSStatusItem *statusItem;

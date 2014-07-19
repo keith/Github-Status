@@ -25,6 +25,3 @@ NSString * const kGithubNormalStatus = @"good";
 
 // User Strings
 NSString * const GITHUB_UNREACHABLE = @"status.github.com is unreachable.";
-
-@implementation KSConstants
-@end

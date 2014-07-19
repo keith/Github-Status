@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 Keith Smiley. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 // Preferences
 FOUNDATION_EXPORT NSString * const openAtLogin;
 FOUNDATION_EXPORT NSString * const refreshInterval;
@@ -25,6 +23,3 @@ FOUNDATION_EXPORT NSString * const kGithubNormalStatus;
 
 // User strings
 FOUNDATION_EXPORT NSString * const GITHUB_UNREACHABLE;
-
-@interface KSConstants : NSObject
-@end

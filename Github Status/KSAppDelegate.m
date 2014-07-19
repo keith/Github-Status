@@ -8,25 +8,24 @@
 
 #import "KSAppDelegate.h"
 #import "KSConstants.h"
-
-#import "AFNetworking.h"
-#import "Reachability.h"
 #import "MPLoginItems/MPLoginItems.h"
 
 @implementation KSAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Setup NSUserDefaults
     NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
     NSDictionary *defaults = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Preferences" ofType:@"plist"]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     [[NSUserDefaults standardUserDefaults] setBool:[MPLoginItems loginItemExists:bundleURL] forKey:openAtLogin];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 
-    // Check status on launch
     self.githubIsUp = YES;
     [self checkStatus];
+}
+
+- (void)applicationWillTerminate:(NSNotification *)notification
+{
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)awakeFromNib
