@@ -18,7 +18,9 @@
 @property (nonatomic) KSStatusItemManager *statusManager;
 @property (nonatomic) KSMenuManager *menuManager;
 @property (nonatomic) KSGithubStatusAPI *statusAPI;
+@property (nonatomic) NSTimer *timer;
 
+@property (nonatomic) NSInteger currentInterval;
 @property (nonatomic) NSInteger interval;
 @property (nonatomic) NSInteger downInterval;
 @property (nonatomic) BOOL lastAvailability;
@@ -34,23 +36,25 @@
 
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
     self.lastAvailability = YES;
-    [self refreshStatus];
-    [self runRefreshTimerWithInterval:self.interval];
+    [self runRefreshTimerWithInterval:self.currentInterval];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
+    [self.timer invalidate];
     [self.statusManager removeStatusItem];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)runRefreshTimerWithInterval:(NSInteger)interval
 {
-    [NSTimer scheduledTimerWithTimeInterval:interval
-                                     target:self
-                                   selector:@selector(refreshStatus)
-                                   userInfo:nil
-                                    repeats:NO];
+    [self.timer invalidate];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:interval
+                                                  target:self
+                                                selector:@selector(refreshStatus)
+                                                userInfo:nil
+                                                 repeats:YES];
+    [self.timer fire];
 }
 
 - (void)awakeFromNib
@@ -80,7 +84,10 @@
         interval = self.downInterval;
     }
 
-    [self runRefreshTimerWithInterval:interval];
+    if (self.currentInterval != interval) {
+        self.currentInterval = interval;
+        [self runRefreshTimerWithInterval:interval];
+    }
 }
 
 - (void)setStatusIconWithAvailable:(BOOL)available
@@ -155,6 +162,15 @@
     }
 
     return _statusAPI;
+}
+
+- (NSInteger)currentInterval
+{
+    if (!_currentInterval) {
+        _currentInterval = self.interval;
+    }
+
+    return _currentInterval;
 }
 
 - (NSInteger)interval
