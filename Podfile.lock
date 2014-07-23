@@ -1,6 +1,6 @@
 PODS:
   - IYLoginItem (0.1)
-  - KSGithubStatusAPI (0.2.2):
+  - KSGithubStatusAPI (0.2.3):
     - Reachability (~> 3.1.0)
   - Reachability (3.1.1)
 
@@ -10,7 +10,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   IYLoginItem: dbdbc4636da5087b200f68456aa4367a1af35c1d
-  KSGithubStatusAPI: 6275d07dec675c7016a60a88fff5eaa3a204fac2
+  KSGithubStatusAPI: 84e9d7090804c89a804553e4f4872e6405b8b724
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
 
 COCOAPODS: 0.33.1
