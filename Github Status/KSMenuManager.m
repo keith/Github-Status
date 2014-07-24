@@ -74,8 +74,12 @@
 
 - (void)setGithubMessageString:(NSString *)message
 {
+    BOOL emptyMessage = !message;
+    [self.githubMessageItem setHidden:emptyMessage];
+    if (emptyMessage) {
+        return;
+    }
     self.githubMessageItem.title = message;
-    [self.githubMessageItem setHidden:!message];
     [self setupLastCheckedSeparator];
 }
 
